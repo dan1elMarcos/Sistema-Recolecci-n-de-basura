@@ -1,8 +1,9 @@
 
 <ul class="menu-lista">
-    <li><a href="/index.php" class="activo">Dashboard</a></li>
-    <li><a href="#">Vehículos</a></li>
-    <li><a href="#">Control de Combustible</a></li>
+   
+    <li><a href="Developer-6  Reportes y UI General/interfaz/componentes/vehiculos/camiones.php">Vehículos</a></li>
+    <li><a href="Developer-6  Reportes y UI General/interfaz/componentes/combust.php">Control de Combustible</a></li>
+    <li><a href="/recolectora-sa/Developer-5%20%20Frontend%20Pagos/pago.php">Pagos</a></li>
     <li><a href="#">Rutas</a></li>
     <li><a href="#">Conductores</a></li>
     <li><a href="Developer-6  Reportes y UI General/interfaz/componentes/report/reportes.php">Reportes</a></li>

@@ -14,6 +14,19 @@
   --radius:    12px;
 }
 
+.dark-mode {
+  --bg:        #121418;
+  --surface:   #1c2127;
+  --card:      #232a33;
+  --border:    #2f373f;
+  --accent:    #7ec64f;
+  --accent-d:  #a2d46d;
+  --warn:      #f5c65f;
+  --danger:    #f08c65;
+  --text:      #f1f5f9;
+  --muted:     #a3afbc;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -126,6 +139,19 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 header h1 {
@@ -133,6 +159,32 @@ header h1 {
   font-weight: 700;
   color: var(--accent-d);
   letter-spacing: -0.3px;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.theme-toggle:hover {
+  background: rgba(132,191,4,0.1);
+  border-color: var(--accent);
+}
+
+.dark-mode .theme-toggle {
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--text);
 }
 
 /* Logo — coloca tu imagen aquí */

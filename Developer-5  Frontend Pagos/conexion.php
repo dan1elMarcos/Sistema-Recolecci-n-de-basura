@@ -1,15 +1,13 @@
 <?php
-$host     = "localhost";
-$dbname   = "basura";
-$usuario  = "root";
-$password = "";
-
-$conexion = new mysqli($host, $usuario, $password, $dbname);
-$conexion->set_charset("utf8");
-
-if ($conexion->connect_error) {
-    http_response_code(500);
-    echo json_encode(["error" => "Error de conexion: " . $conexion->connect_error]);
+// Conexión local para el módulo de pagos que reutiliza el archivo de Dev 2.
+$db_path = '../Developer-2  Backend API/recolectora-api/config/database.php';
+if (!file_exists($db_path)) {
+    header('Content-Type: application/json');
+    echo json_encode(["error" => "No se encontró el archivo de conexión de la base de datos."]);
     exit;
 }
+require_once $db_path;
+
+// El archivo database.php define $conn
+$conexion = $conn;
 ?>

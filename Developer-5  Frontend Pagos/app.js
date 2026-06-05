@@ -8,7 +8,7 @@ function toggleSidebar() {
 }
 
 function cargarClientes() {
-    fetch('com/clientes.php')
+    fetch('clientes.php')
         .then(res => {
             if (!res.ok) throw new Error('HTTP ' + res.status);
             return res.json();
@@ -18,6 +18,27 @@ function cargarClientes() {
             renderTabla();
         })
         .catch(err => mostrarToast('Error al cargar clientes: ' + err.message));
+}
+
+function applyTheme(theme) {
+    const body = document.body;
+    if (theme === 'dark') {
+        body.classList.add('dark-mode');
+        document.getElementById('themeToggle').textContent = '☀️';
+    } else {
+        body.classList.remove('dark-mode');
+        document.getElementById('themeToggle').textContent = '🌙';
+    }
+    localStorage.setItem('pagosTheme', theme);
+}
+
+function initTheme() {
+    const savedTheme = localStorage.getItem('pagosTheme') || 'light';
+    applyTheme(savedTheme);
+    document.getElementById('themeToggle').addEventListener('click', () => {
+        const nextTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+        applyTheme(nextTheme);
+    });
 }
 
 function renderTabla() {
@@ -118,7 +139,7 @@ function confirmarPago() {
     // Guardamos el nombr
     const nombreCliente = clienteSeleccionado ? clienteSeleccionado.nombre_completo : 'el cliente';
 
-    fetch('com/registrar_pago.php', {
+    fetch('registrar_pago.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -177,5 +198,6 @@ document.getElementById('modalOverlay').addEventListener('click', e => {
     if (e.target === e.currentTarget) closeModal();
 });
 
+initTheme();
 // Cargar al iniciar
 cargarClientes();
